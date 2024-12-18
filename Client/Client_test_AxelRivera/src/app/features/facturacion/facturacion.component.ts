@@ -43,7 +43,7 @@ export class FacturacionComponent {
   }
 
   cargarProductos(): void {
-    this.facturacionService.ObtenerProductos().then(res => {
+    this.facturacionService.ObtenerProductosNoDescontinuados().then(res => {
       this.productosDataSource = res.data;
     });
   }

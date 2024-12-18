@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using test_AxelRivera.WebApi.Features.Clientes;
 using test_AxelRivera.WebApi.Features.Facturas;
-using test_AxelRivera.WebApi.Features.Facturas.Dto;
 using test_AxelRivera.WebApi.Features.Productos;
 using test_AxelRivera.WebApi.Features.Reporte;
 using test_AxelRivera.WebApi.Infrastructure;
@@ -27,7 +26,7 @@ namespace test_AxelRivera.WebApi.Common
                            .AddScoped<IFacturasAppService, FacturasAppService>()
                            .AddScoped<FacturaDomainService>()
                            .AddScoped<IClienteAppService, ClienteAppService>();
-            
+
         }
     }
 }

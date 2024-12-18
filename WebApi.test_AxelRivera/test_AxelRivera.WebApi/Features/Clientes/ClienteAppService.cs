@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using test_AxelRivera.WebApi.Common;
 using test_AxelRivera.WebApi.Features.Clientes.Dto;
-using test_AxelRivera.WebApi.Features.Productos;
-using test_AxelRivera.WebApi.Features.Productos.Dto;
 using test_AxelRivera.WebApi.Infrastructure;
 
 namespace test_AxelRivera.WebApi.Features.Clientes
@@ -19,14 +17,14 @@ namespace test_AxelRivera.WebApi.Features.Clientes
             try
             {
                 List<ClientesDto> clientes = (from clientesLista in _testAxelRiveraContext.Clientes.AsNoTracking()
-                                               select new ClientesDto
-                                               {
-                                                    ClienteId = clientesLista.ClienteId,
-                                                    Correo = clientesLista.Correo,
-                                                    Direccion = clientesLista.Direccion ?? "N/A",
-                                                    Nombre = clientesLista.Nombre ?? "N/A", 
-                                                    Telefono = clientesLista.Telefono ?? "N/A",
-                                               }).ToList();
+                                              select new ClientesDto
+                                              {
+                                                  ClienteId = clientesLista.ClienteId,
+                                                  Correo = clientesLista.Correo,
+                                                  Direccion = clientesLista.Direccion ?? "N/A",
+                                                  Nombre = clientesLista.Nombre ?? "N/A",
+                                                  Telefono = clientesLista.Telefono ?? "N/A",
+                                              }).ToList();
 
                 if (clientes.Count <= 0)
                     return Respuesta<List<ClientesDto>>.Fault(Mensajes.CLIENTES_OBTENIDOS_EXITOSAMENTE, CodigosHttp.SERVER_ERROR_CODE, new List<ClientesDto>());

@@ -26,6 +26,11 @@ export class FacturacionService {
     return await firstValueFrom(this._http.get<Respuesta<Array<ProductoDto>>>(`${endpoint}/ObtenerProductos`));
   }
 
+  async ObtenerProductosNoDescontinuados(): Promise<Respuesta<Array<ProductoDto>>> {
+    let endpoint = `${this.api}api/Productos`;
+    return await firstValueFrom(this._http.get<Respuesta<Array<ProductoDto>>>(`${endpoint}/ObtenerProductosNoDescontinuados`));
+  }
+
   async AgregarProducto(productoAgregar:ProductoPeticionDto): Promise<Respuesta<string>> {
     let endpoint = `${this.api}api/Productos`;
     const headers = new HttpHeaders({'Content-Type': 'application/json' });

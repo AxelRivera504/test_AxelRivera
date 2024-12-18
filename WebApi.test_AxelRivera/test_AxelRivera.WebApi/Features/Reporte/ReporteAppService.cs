@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using test_AxelRivera.WebApi.Common;
-using test_AxelRivera.WebApi.Features.Productos;
-using test_AxelRivera.WebApi.Features.Productos.Dto;
 using test_AxelRivera.WebApi.Features.Reporte.Dto;
 using test_AxelRivera.WebApi.Infrastructure;
 

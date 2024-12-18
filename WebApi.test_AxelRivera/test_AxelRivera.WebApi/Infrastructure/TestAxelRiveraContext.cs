@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using test_AxelRivera.WebApi.Infrastructure.Enitites;
 using test_AxelRivera.WebApi.Infrastructure.Mapping;
 using test_AxelRivera.WebApi.Infrastructure.Views;

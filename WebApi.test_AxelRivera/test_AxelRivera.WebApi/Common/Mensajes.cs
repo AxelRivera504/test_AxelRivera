@@ -24,4 +24,10 @@
         public const string SERVER_ERROR_CODE = "500";
         public const string ASISTENCIA_YA_CONFIRMADA = "404";
     }
+
+    public static class TipoMovimientoProductos
+    {
+        public const string SALIDA = "S";
+        public const string ENTRADA = "E";
+    }
 }

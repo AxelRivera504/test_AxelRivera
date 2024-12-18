@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using test_AxelRivera.WebApi.Infrastructure.Enitites;
-using static Dapper.SqlMapper;
 
 namespace test_AxelRivera.WebApi.Infrastructure.Mapping
 {

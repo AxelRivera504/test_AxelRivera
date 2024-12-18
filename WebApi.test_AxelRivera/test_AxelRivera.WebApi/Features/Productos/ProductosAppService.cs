@@ -21,19 +21,47 @@ namespace test_AxelRivera.WebApi.Features.Productos
             {
                 List<ProductoDto> productos = (from productolista in _testAxelRiveraContext.Productos.AsNoTracking()
                                                where productolista.CantidadDisponible > 0
-                                               select new ProductoDto { 
-                                                CantidadDisponible = productolista.CantidadDisponible,
-                                                Descripcion = productolista.Descripcion,
-                                                NombreProducto = productolista.NombreProducto,
-                                                Precio = productolista.Precio,  
-                                                ProductoId = productolista.ProductoId,
-                                                Descontinuado = productolista.Descontinuado ?? false
+                                               select new ProductoDto
+                                               {
+                                                   CantidadDisponible = productolista.CantidadDisponible,
+                                                   Descripcion = productolista.Descripcion,
+                                                   NombreProducto = productolista.NombreProducto,
+                                                   Precio = productolista.Precio,
+                                                   ProductoId = productolista.ProductoId,
+                                                   Descontinuado = productolista.Descontinuado ?? false
                                                }).ToList();
 
-                if(productos.Count <= 0)
+                if (productos.Count <= 0)
                     return Respuesta<List<ProductoDto>>.Fault(Mensajes.PRODUCTOS_NO_OBTENIDOS_EXITOSAMENTE, CodigosHttp.SERVER_ERROR_CODE, new List<ProductoDto>());
 
-                return Respuesta<List<ProductoDto>>.Success(productos, Mensajes.PRODUCTOS_OBTENIDOS_EXITOSAMENTE,CodigosHttp.SUCCESS_CODE);
+                return Respuesta<List<ProductoDto>>.Success(productos, Mensajes.PRODUCTOS_OBTENIDOS_EXITOSAMENTE, CodigosHttp.SUCCESS_CODE);
+            }
+            catch (Exception ex)
+            {
+                return Respuesta<List<ProductoDto>>.Fault(string.Format(Mensajes.PROCESO_ERROR, ex.Message), CodigosHttp.SERVER_ERROR_CODE, new List<ProductoDto>());
+            }
+        }
+        public Respuesta<List<ProductoDto>> ObtenerProductosNoDescontinuados()
+        {
+            try
+            {
+                List<ProductoDto> productos = (from productolista in _testAxelRiveraContext.Productos.AsNoTracking()
+                                               where productolista.CantidadDisponible > 0
+                                               && productolista.Descontinuado == false
+                                               select new ProductoDto
+                                               {
+                                                   CantidadDisponible = productolista.CantidadDisponible,
+                                                   Descripcion = productolista.Descripcion,
+                                                   NombreProducto = productolista.NombreProducto,
+                                                   Precio = productolista.Precio,
+                                                   ProductoId = productolista.ProductoId,
+                                                   Descontinuado = productolista.Descontinuado ?? false
+                                               }).ToList();
+
+                if (productos.Count <= 0)
+                    return Respuesta<List<ProductoDto>>.Fault(Mensajes.PRODUCTOS_NO_OBTENIDOS_EXITOSAMENTE, CodigosHttp.SERVER_ERROR_CODE, new List<ProductoDto>());
+
+                return Respuesta<List<ProductoDto>>.Success(productos, Mensajes.PRODUCTOS_OBTENIDOS_EXITOSAMENTE, CodigosHttp.SUCCESS_CODE);
             }
             catch (Exception ex)
             {
@@ -47,7 +75,7 @@ namespace test_AxelRivera.WebApi.Features.Productos
             {
                 Respuesta<bool> repuesta = _productosDomainService.ValidarInsercionProducto(productoDtoPeticion);
                 if (!repuesta.Ok)
-                    return Respuesta<string>.Fault(repuesta.Mensaje,CodigosHttp.SERVER_ERROR_CODE);
+                    return Respuesta<string>.Fault(repuesta.Mensaje, CodigosHttp.SERVER_ERROR_CODE);
 
                 Producto producto = new Producto()
                 {
@@ -89,7 +117,7 @@ namespace test_AxelRivera.WebApi.Features.Productos
 
                 await _testAxelRiveraContext.SaveChangesAsync();
 
-                return Respuesta<string>.Success("",Mensajes.PRODUCTO_ACTUALIZADO_EXITOSAMENTE, CodigosHttp.SUCCESS_CODE);
+                return Respuesta<string>.Success("", Mensajes.PRODUCTO_ACTUALIZADO_EXITOSAMENTE, CodigosHttp.SUCCESS_CODE);
             }
             catch (Exception ex)
             {

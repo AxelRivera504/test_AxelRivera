@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace test_AxelRivera.WebApi.Infrastructure.Views;
+﻿namespace test_AxelRivera.WebApi.Infrastructure.Views;
 
 public partial class VwReporteDetalladoVenta
 {

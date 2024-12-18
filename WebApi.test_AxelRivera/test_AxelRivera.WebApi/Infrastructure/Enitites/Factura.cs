@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace test_AxelRivera.WebApi.Infrastructure.Enitites;
+﻿namespace test_AxelRivera.WebApi.Infrastructure.Enitites;
 
 public partial class Factura
 {

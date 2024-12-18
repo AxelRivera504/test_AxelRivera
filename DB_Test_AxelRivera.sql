@@ -72,8 +72,6 @@ CREATE TABLE MovimientosInventario (
 
 GO
 
-GO
-
 --Vista
 CREATE OR ALTER VIEW Vw_ReporteDetalladoVentas AS
 SELECT 
@@ -96,9 +94,6 @@ INNER JOIN
     Clientes clie ON fact.cliente_id = clie.cliente_id
 INNER JOIN  
     Productos prod ON detF.producto_id = prod.producto_id;
-
-
-	select * from Vw_ReporteDetalladoVentas
 
 --Inserts
 

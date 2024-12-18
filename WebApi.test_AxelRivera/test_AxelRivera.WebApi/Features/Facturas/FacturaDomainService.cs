@@ -1,8 +1,8 @@
 ﻿using test_AxelRivera.WebApi.Common;
-using test_AxelRivera.WebApi.Features.Productos.Dto;
+using test_AxelRivera.WebApi.Features.Facturas.Dto;
 using test_AxelRivera.WebApi.Infrastructure.Enitites;
 
-namespace test_AxelRivera.WebApi.Features.Facturas.Dto
+namespace test_AxelRivera.WebApi.Features.Facturas
 {
     public class FacturaDomainService
     {

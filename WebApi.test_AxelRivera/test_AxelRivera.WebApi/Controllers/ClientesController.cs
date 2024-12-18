@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using test_AxelRivera.WebApi.Features.Clientes;
-using test_AxelRivera.WebApi.Features.Productos;
 
 namespace test_AxelRivera.WebApi.Controllers
 {

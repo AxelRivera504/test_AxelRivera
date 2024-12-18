@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using test_AxelRivera.WebApi.Features.Reporte;
 using test_AxelRivera.WebApi.Features.Reporte.Dto;
 

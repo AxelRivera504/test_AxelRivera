@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using test_AxelRivera.WebApi.Features.Productos;
 using test_AxelRivera.WebApi.Features.Productos.Dto;
 
@@ -19,6 +18,13 @@ namespace test_AxelRivera.WebApi.Controllers
         public IActionResult ObtenerProductos()
         {
             var result = _productosAppService.ObtenerProductos();
+            return Ok(result);
+        }
+
+        [HttpGet("ObtenerProductosNoDescontinuados")]
+        public IActionResult ObtenerProductosNoDescontinuados()
+        {
+            var result = _productosAppService.ObtenerProductosNoDescontinuados();
             return Ok(result);
         }
 
