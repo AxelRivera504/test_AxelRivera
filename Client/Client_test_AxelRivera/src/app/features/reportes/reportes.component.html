@@ -1,0 +1,129 @@
+<br>
+<br>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h1>Reporte de Ventas</h1>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="reporteForm">
+        <div class="row">
+          <div class="col-md-3">
+            <span class="form-label">Fecha Inicio</span>
+            <dx-date-box
+              formControlName="fechaInicio"
+              [min]="minDate"
+              displayFormat="dd/MM/yyyy"
+              height="47">
+            </dx-date-box>
+          </div>
+          <div class="col-md-3">
+            <span class="form-label">Fecha Fin</span>
+            <dx-date-box
+              formControlName="fechaFin"
+              [min]="minDate"
+              displayFormat="dd/MM/yyyy"
+              height="47">
+            </dx-date-box>
+          </div>
+          <div class="col-md-3">
+            <span class="form-label">Producto</span>
+            <dx-lookup
+              [dataSource]="productosDataSource"
+              displayExpr="nombreProducto"
+              valueExpr="productoId"
+              formControlName="productoId"
+              placeholder="Seleccione un producto...">
+            </dx-lookup>
+          </div>
+          <div class="col-md-3">
+            <span class="form-label">Cliente</span>
+            <dx-lookup
+              [dataSource]="clientesDataSource"
+              displayExpr="nombre"
+              valueExpr="clienteId"
+              formControlName="clienteId"
+              placeholder="Seleccione un cliente...">
+            </dx-lookup>
+          </div>
+        </div>
+        <div class="row justify-content-center mt-3">
+          <dx-button
+            text="Buscar"
+            type="default"
+            icon="search"
+            (onClick)="onSearchReporte()">
+          </dx-button>
+        </div>
+      </form>
+    <br>
+    <br>
+      <div>
+        <dx-data-grid
+      [dataSource]="reporteDataSource"
+      [showColumnLines]="true"
+      [showRowLines]="true"
+      [showBorders]="true"
+      [allowColumnResizing]="true"
+      columnResizingMode="widget"
+      [allowColumnReordering]="true"
+      [hoverStateEnabled]="true"
+      [cellHintEnabled]="true"
+      noDataText="No hay ninguna transacción."
+      width="100%" [wordWrapEnabled]="true">
+        <dxo-export [enabled]="true" [fileName]="'Reporte ventas'"></dxo-export>
+        <dxo-load-panel [enabled]="true" text="Cargando..."></dxo-load-panel>
+        <dxo-selection mode="multiple"></dxo-selection>
+        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true" placeholder="Buscar...">
+        </dxo-search-panel>
+        <dxo-header-filter [visible]="true" [allowSearch]="true"></dxo-header-filter>
+        <dxo-filter-row [visible]="true" ></dxo-filter-row>
+        <dxo-filter-panel [visible]="false" [texts]="{ createFilter: 'Crear filtro', clearFilter: 'Limpiar filtros'}">
+        </dxo-filter-panel>
+
+        <dxo-paging [pageSize]="10" [pageIndex]="0"></dxo-paging>
+        <dxi-column caption="Nombre Cliente" dataField="nombreCliente" sortOrder="asc"></dxi-column>
+        <dxi-column caption="DireccionCliente" dataField="direccionCliente" sortOrder="asc"></dxi-column>
+        <dxi-column caption="Factura" dataField="idFactura" sortOrder="asc"></dxi-column>
+        <dxo-master-detail [enabled]="true" template="reporteDataSource"></dxo-master-detail>
+        <div *dxTemplate="let detalle of 'reporteDataSource'">
+          <dx-data-grid
+          [dataSource]="detalle.data.reportePeticionDetalleDto"
+          [showBorders]="true"
+          keyExpr="nombreProducto"
+          [columnAutoWidth]="true"
+          >
+            <dxo-load-panel [enabled]="true" text="Cargando..."></dxo-load-panel>
+            <dxo-selection mode="single"></dxo-selection>
+            <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true" placeholder="Buscar...">
+            </dxo-search-panel>
+            <dxo-header-filter [visible]="true" [allowSearch]="true"></dxo-header-filter>
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+            <dxo-filter-panel [visible]="false"
+                [texts]="{ createFilter: 'Crear filtro', clearFilter: 'Limpiar filtros'}">
+            </dxo-filter-panel>
+            <dxo-paging [pageSize]="10" [pageIndex]="0"></dxo-paging>
+              <dxi-column caption="ProductoNombre" dataField="nombreProducto" width="160" alignment="center"></dxi-column>
+              <dxi-column caption="Cantidad Vendida" dataField="cantidadVendida" width="160" alignment="center"></dxi-column>
+              <dxi-column caption="Precio Unitario" dataField="precioUnitario" width="160" alignment="center"></dxi-column>
+              <dxi-column caption="Total" [calculateCellValue]="calculateTotal" alignment="center">
+            </dxi-column>
+
+            <dxo-summary>
+              <dxi-total-item
+                column="Total"
+                summaryType="sum"
+                valueFormat="#,##0.00"
+                displayFormat="Total (Incluye ISV 15%): {0}"
+                cssClass="summary-custom-style">
+              </dxi-total-item>
+            </dxo-summary>
+
+          </dx-data-grid>
+        </div>
+    </dx-data-grid>
+      </div>
+    </div>
+  </div>
+</div>
+

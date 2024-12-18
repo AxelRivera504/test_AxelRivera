@@ -1,0 +1,53 @@
+﻿{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:13821",
+      "sslPort": 44366
+    }
+  },
+  "profiles": {
+    "http": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "http://localhost:5006",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "test_AxelRivera_Server": "DESKTOP-25QNLBO\\SQLEXPRESS",
+        "test_AxelRivera_DB": "test_AxelRivera",
+        "test_AxelRivera_Usuario": "axel",
+        "test_AxelRivera_Clave": "@Xel0501"
+      }
+    },
+    "https": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "https://localhost:7277;http://localhost:5006",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "test_AxelRivera_Server": "DESKTOP-25QNLBO\\SQLEXPRESS",
+        "test_AxelRivera_DB": "test_AxelRivera",
+        "test_AxelRivera_Usuario": "axel",
+        "test_AxelRivera_Clave": "@Xel0501"
+      }
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "test_AxelRivera_Server": "DESKTOP-25QNLBO\\SQLEXPRESS",
+        "test_AxelRivera_DB": "test_AxelRivera",
+        "test_AxelRivera_Usuario": "axel",
+        "test_AxelRivera_Clave": "@Xel0501"
+      }
+    }
+  }
+}
